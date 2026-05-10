@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VoidXHub | Software Developer</title>
+  <title>YashXchi | Portfolio</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -11,7 +11,27 @@
       background: #0f0f0f;
       color: #ffffff;
       line-height: 1.6;
+      cursor: none; /* Normal cursor hide */
     }
+
+    /* Cute Cat Custom Cursor */
+    .cursor {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      background: url('https://cdn-icons-png.flaticon.com/512/220/220223.png') no-repeat center;
+      background-size: contain;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.1s ease;
+      mix-blend-mode: difference;
+    }
+
+    .cursor.hover {
+      transform: scale(1.4);
+      filter: hue-rotate(30deg);
+    }
+
     .hero {
       height: 100vh;
       display: flex;
@@ -22,72 +42,71 @@
     }
     .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
    
-    h1 { font-size: 3.5rem; margin-bottom: 10px; }
-    h2 { font-size: 2.2rem; margin: 40px 0 20px; color: #00ff9d; }
+    h1 { font-size: 3.8rem; margin-bottom: 15px; }
+    p { font-size: 1.5rem; margin-bottom: 30px; color: #cccccc; }
    
     .btn {
       display: inline-block;
-      padding: 12px 30px;
+      padding: 14px 35px;
       background: #00ff9d;
       color: black;
       text-decoration: none;
       border-radius: 50px;
       font-weight: bold;
-      margin-top: 20px;
-    }
-   
-    .section { padding: 80px 0; }
-    .skills { display: flex; flex-wrap: wrap; gap: 15px; }
-    .skill-card {
-      background: #1a1a1a;
-      padding: 15px 25px;
-      border-radius: 10px;
-      border: 1px solid #00ff9d;
+      font-size: 1.1rem;
+      margin: 10px;
     }
 
-    a {
-      color: #00ff9d;
+    nav a {
+      color: white;
+      margin: 0 20px;
       text-decoration: none;
+      font-size: 1.1rem;
     }
-    a:hover {
-      text-decoration: underline;
-    }
+    nav a:hover { color: #00ff9d; }
   </style>
 </head>
 <body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="aboutme.html">About Me</a>
+    <a href="projects.html">Projects</a>
+  </nav>
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
       <h1>Hi, I'm <span style="color:#00ff9d;">YASHXCHI</span></h1>
-      <p style="font-size:1.4rem; margin:20px 0;">Aspiring Full Stack Developer | BCA Student</p>
-      <a href="#projects" class="btn">See My Projects</a>
+      <p>Aspiring Full Stack Developer | BCA Student</p>
+      <a href="projects.html" class="btn">See My Projects</a>
+      <a href="aboutme.html" class="btn" style="background:#333; color:white;">About Me</a>
     </div>
   </section>
 
-  <!-- About -->
-  <section class="section">
-    <div class="container">
-      <h2>About Me</h2>
-      <p>I'm a passionate BCA student who loves building websites and learning new technologies. Currently learning Full Stack Development and aiming to become a good Software Developer.</p>
-    </div>
-  </section>
+  <script>
+    const cursor = document.getElementById('cursor');
 
-  <!-- Projects -->
-  <section class="section" id="projects">
-    <div class="container">
-      <h2>My Projects</h2>
-      <p>
-        <a href="https://roardiamond.github.io/VOIDXHUB" target="_blank">
-          → VoidXHub (My First Project)
-        </a>
-      </p>
-    </div>
-  </section>
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
 
-  <footer style="text-align:center; padding:40px; background:#111;">
-    <p>Contact: yashxchi@gmail.com</p>
-  </footer>
+    // Hover effect on cards and buttons
+    const hoverElements = document.querySelectorAll('a, .project, button, .btn');
+    
+    hoverElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.classList.add('hover');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('hover');
+      });
+    });
+  </script>
 
 </body>
 </html>
